@@ -14,7 +14,6 @@ Giao diện	HTML, CSS, Bootstrap
 - Thuật toán sử dụng: AES – chế độ CBC (Cipher Block Chaining)
 - Khóa mã hóa:
   + Người dùng nhập từ giao diện web.
-  + Yêu cầu tối thiểu 8 ký tự, được chuẩn hóa thành 16 byte để phù hợp với AES-128.
 - IV (Initialization Vector):
   + Tạo ngẫu nhiên mỗi lần mã hóa.
   + Gắn vào đầu dữ liệu mã hóa để phục vụ giải mã.
