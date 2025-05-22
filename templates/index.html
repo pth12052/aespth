@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #e0f7fa, #fce4ec);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.container {
+  background: white;
+  padding: 40px 30px;
+  border-radius: 20px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 25px 40px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #2c3e50;
+  font-size: 1.8rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #37474f;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  font-size: 0.95rem;
+  transition: border 0.2s ease;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: #4fc3f7;
+}
+
+.file-upload {
+  position: relative;
+  border: 2px dashed #00acc1;
+  border-radius: 12px;
+  padding: 30px 20px;
+  text-align: center;
+  color: #007c91;
+  margin-bottom: 25px;
+  transition: background 0.3s;
+  cursor: pointer;
+}
+
+.file-upload:hover {
+  background: #e0f7fa;
+}
+
+.file-upload input[type="file"] {
+  display: none;
+}
+
+.file-upload i {
+  font-size: 2rem;
+  margin-bottom: 10px;
+  display: block;
+}
+
+#file-name {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #37474f;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+button {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 12px;
+  background: #00acc1;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background: #00838f;
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+  </style>
+<head>
+  <title>AES File Encrypt/Decrypt</title>
+
+</head>
+<body>
+  <div class="container">
+    <h1>AES File Encrypt/Decrypt</h1>
+    <form action="/process" method="post" enctype="multipart/form-data">
+      <label for="key">Nhập khóa:</label>
+      <input type="text" name="key" id="key" maxlength="32" required>
+
+     <label for="file">Upload file:</label>
+<div class="file-upload" onclick="document.getElementById('fileInput').click();">
+    <i class="fa-solid fa-file-arrow-up"></i>
+    <span>Click để chọn file</span>
+    <div id="file-name">Chưa chọn file</div>
+    <input type="file" name="file" id="fileInput" required onchange="updateFileName(this)">
+</div>
+
+
+      <div class="buttons">
+        <button type="submit" name="action" value="encrypt">Mã hóa</button>
+        <button type="submit" name="action" value="decrypt">Giải mã</button>
+      </div>
+    </form>
+  </div>
+</body>
+<script>
+  function updateFileName(input) {
+    const fileName = input.files[0]?.name || "Chưa chọn file";
+    document.getElementById("file-name").innerText = fileName;
+  }
+</script>
+
+</html>
